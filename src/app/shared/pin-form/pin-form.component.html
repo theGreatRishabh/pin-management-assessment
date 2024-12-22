@@ -1,48 +1,110 @@
-<form [formGroup]="pinForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" required />
-    <mat-error *ngIf="pinForm.get('title')?.invalid"
-      >Title is required</mat-error
-    >
-  </mat-form-field>
+<div>
+  <form [formGroup]="pinForm" (ngSubmit)="onSubmit()" class="custom-form">
+    <div class="form-group row">
+      <label for="pinTitle" class="col-sm-3 col-form-label text-right"
+        >Title*</label
+      >
+      <div class="col-sm-9">
+        <input
+          type="text"
+          class="form-control"
+          id="pinTitle"
+          formControlName="title"
+          required
+        />
+        <div *ngIf="pinForm.get('title')?.invalid" class="text-danger">
+          Title is required
+        </div>
+      </div>
+    </div>
 
-  <div class="drag-drop">
-    <label for="fileUpload">Select Image</label>
-    <input
-      type="file"
-      id="fileUpload"
-      (change)="onFileChange($event)"
-      accept="image/*"
-      required
-    />
-    <mat-error *ngIf="!selectedFile && fileTouched"
-      >Image is required</mat-error
-    >
-  </div>
+    <div class="form-group row">
+      <label for="pinImage" class="col-sm-3 col-form-label text-right"
+        >Select Image*</label
+      >
+      <div class="col-sm-9">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="pinImage"
+              (change)="onFileChange($event)"
+              accept="image/*"
+              required
+            />
+          </div>
+        </div>
+        <div *ngIf="!selectedFile && fileTouched" class="text-danger">
+          Image is required
+        </div>
+      </div>
+    </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Select Collaborators</mat-label>
-    <mat-select formControlName="collaborators" multiple>
-      <mat-option *ngFor="let customer of customers" [value]="customer">
-        {{ customer }}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="pinForm.get('collaborators')?.invalid">
-      At least one collaborator is required
-    </mat-error>
-  </mat-form-field>
+    <div class="form-group row">
+      <label for="pinCollaborators" class="col-sm-3 col-form-label text-right"
+        >Select Collaborators*</label
+      >
+      <div class="col-sm-9">
+        <select
+          class="form-control"
+          id="pinCollaborators"
+          formControlName="collaborators"
+          required
+        >
+          <option *ngFor="let customer of customers" [value]="customer">
+            {{ customer }}
+          </option>
+        </select>
+        <div *ngIf="pinForm.get('collaborators')?.invalid" class="text-danger">
+          At least one collaborator is required
+        </div>
+      </div>
+    </div>
 
-  <div class="privacy-options">
-    <mat-radio-group formControlName="privacy">
-      <mat-radio-button value="Public">Public</mat-radio-button>
-      <mat-radio-button value="Private">Private</mat-radio-button>
-    </mat-radio-group>
-  </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label text-right">Privacy*</label>
+      <div class="col-sm-9">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="privacy"
+            id="privacyPublic"
+            value="Public"
+            formControlName="privacy"
+            required
+          />
+          <label class="form-check-label" for="privacyPublic">Public</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="privacy"
+            id="privacyPrivate"
+            value="Private"
+            formControlName="privacy"
+            required
+          />
+          <label class="form-check-label" for="privacyPrivate">Private</label>
+        </div>
+        <div *ngIf="pinForm.get('privacy')?.invalid" class="text-danger">
+          Privacy selection is required
+        </div>
+      </div>
+    </div>
 
-  <div class="actions">
-    <button mat-raised-button color="primary" [disabled]="pinForm.invalid">
-      Create Pin
-    </button>
-  </div>
-</form>
+    <div class="form-group row justify-content-center">
+      <div class="col-sm-9 text-center">
+        <button
+          type="submit"
+          class="custom-button"
+          [disabled]="pinForm.invalid"
+        >
+          Add Pin
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,14 +1,10 @@
-<div class="container">
-  <h1>Pin Management</h1>
-
-  <div class="actions">
-    <button mat-raised-button color="primary" (click)="openCustomerDialog()">
+<div class="container mt-5">
+  <div class="d-flex flex-column align-items-end mb-3">
+    <button class="custom-button" (click)="openCustomerDialog()">
       + Add Customer
     </button>
-    <button mat-raised-button color="accent" (click)="openPinDialog()">
-      + Add Pin
-    </button>
+    <button class="custom-button" (click)="openPinDialog()">+ Add Pin</button>
   </div>
-
+  <!-- <h1 class="text-left">Pin Management</h1> -->
   <app-pin-list></app-pin-list>
 </div>

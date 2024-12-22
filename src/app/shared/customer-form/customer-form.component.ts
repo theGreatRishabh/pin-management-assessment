@@ -40,7 +40,7 @@ export class CustomerFormComponent implements OnInit {
   onSubmit() {
     if (this.customerForm.valid) {
       console.log(this.customerForm.value);
-      // Call CustomerService to save the customer
+      // Handle form submission
     }
   }
 }

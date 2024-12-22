@@ -12,10 +12,10 @@ export class AppComponent {
   constructor(private dialog: MatDialog) {}
 
   openCustomerDialog() {
-    this.dialog.open(CustomerFormComponent, { width: '400px' });
+    this.dialog.open(CustomerFormComponent, { width: '900px' });
   }
 
   openPinDialog() {
-    this.dialog.open(PinFormComponent, { width: '500px' });
+    this.dialog.open(PinFormComponent, { width: '900px' });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PinFormComponent implements OnInit {
   pinForm: FormGroup;
+  customers: string[] = [
+    'Customer 1',
+    'Customer 2',
+    'Customer 3',
+    'Customer 4',
+    'Customer 5',
+  ];
   selectedFile: File | null = null;
   fileTouched = false;
-  customers = ['Customer 1', 'Customer 2', 'Customer 3']; // Example customers
+
+  @Output() pinAdded = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) {
     this.pinForm = this.fb.group({
@@ -34,8 +42,8 @@ export class PinFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.pinForm.valid) {
+      this.pinAdded.emit(this.pinForm.value);
       console.log(this.pinForm.value);
-      // Handle form submission
     }
   }
 }

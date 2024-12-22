@@ -9,7 +9,26 @@ import { PinFormComponent } from 'src/app/shared/pin-form/pin-form.component';
   styleUrls: ['./pin-list.component.scss'],
 })
 export class PinListComponent implements OnInit {
-  pins: any[] = [];
+  pins: any[] = [
+    {
+      title: 'Sample Pin 1',
+      image: 'https://via.placeholder.com/150',
+      collaborators: ['Customer 1', 'Customer 2'],
+      privacy: 'Public',
+    },
+    {
+      title: 'Sample Pin 2',
+      image: 'https://via.placeholder.com/150',
+      collaborators: ['Customer 3'],
+      privacy: 'Private',
+    },
+    {
+      title: 'Sample Pin 3',
+      image: 'https://via.placeholder.com/150',
+      collaborators: ['Customer 4', 'Customer 5'],
+      privacy: 'Public',
+    },
+  ];
   columns: string[] = ['title', 'image', 'collaborators', 'privacy'];
 
   constructor(
@@ -18,20 +37,24 @@ export class PinListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.pinService.getPins().subscribe((data) => {
-      this.pins = data;
-    });
+    this.loadPins();
   }
 
   loadPins() {
     this.pinService.getPins().subscribe((data) => {
-      this.pins = data;
+      this.pins = data.length ? data : this.pins;
+      console.log('Pins loaded:', this.pins);
     });
   }
 
   openPinForm() {
     const dialogRef = this.dialog.open(PinFormComponent, {
-      width: '500px',
+      width: '200px',
+    });
+
+    dialogRef.componentInstance.pinAdded.subscribe((newPin: any) => {
+      this.pinService.savePin(newPin);
+      this.loadPins();
     });
 
     dialogRef.afterClosed().subscribe((result) => {
