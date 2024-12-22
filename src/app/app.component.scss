@@ -1,0 +1,14 @@
+* {
+  padding: 10px;
+}
+.container {
+  text-align: center;
+  margin: 5rem;
+
+  .actions {
+    margin-bottom: 2rem;
+    button {
+      margin: 0 1rem;
+    }
+  }
+}

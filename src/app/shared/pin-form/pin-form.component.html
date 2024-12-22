@@ -1,0 +1,48 @@
+<form [formGroup]="pinForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" required />
+    <mat-error *ngIf="pinForm.get('title')?.invalid"
+      >Title is required</mat-error
+    >
+  </mat-form-field>
+
+  <div class="drag-drop">
+    <label for="fileUpload">Select Image</label>
+    <input
+      type="file"
+      id="fileUpload"
+      (change)="onFileChange($event)"
+      accept="image/*"
+      required
+    />
+    <mat-error *ngIf="!selectedFile && fileTouched"
+      >Image is required</mat-error
+    >
+  </div>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Select Collaborators</mat-label>
+    <mat-select formControlName="collaborators" multiple>
+      <mat-option *ngFor="let customer of customers" [value]="customer">
+        {{ customer }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="pinForm.get('collaborators')?.invalid">
+      At least one collaborator is required
+    </mat-error>
+  </mat-form-field>
+
+  <div class="privacy-options">
+    <mat-radio-group formControlName="privacy">
+      <mat-radio-button value="Public">Public</mat-radio-button>
+      <mat-radio-button value="Private">Private</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" [disabled]="pinForm.invalid">
+      Create Pin
+    </button>
+  </div>
+</form>

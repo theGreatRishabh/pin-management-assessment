@@ -1,0 +1,22 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.drag-drop {
+  margin: 1rem 0;
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.privacy-options {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions {
+  text-align: right;
+}
