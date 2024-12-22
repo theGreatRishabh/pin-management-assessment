@@ -24,9 +24,6 @@
       >
       <div class="col-sm-9">
         <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Upload</span>
-          </div>
           <div class="custom-file">
             <input
               type="file"
@@ -36,7 +33,6 @@
               accept="image/*"
               required
             />
-            <label class="custom-file-label" for="pinImage">Choose file</label>
           </div>
         </div>
         <div *ngIf="!selectedFile && fileTouched" class="text-danger">
