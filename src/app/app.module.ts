@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { PinListComponent } from './pins/pin-list/pin-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, CustomerListComponent, PinListComponent],
@@ -18,6 +19,7 @@ import { PinListComponent } from './pins/pin-list/pin-list.component';
     SharedModule,
     MatTableModule,
     MatFormFieldModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

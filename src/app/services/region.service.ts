@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegionService {
-  private apiUrl = 'https://api.first.org/data/v1/countries';
+  private apiUrl = 'assets/countries.json';
 
   constructor(private http: HttpClient) {}
 

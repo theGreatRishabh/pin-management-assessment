@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.custom-button {
+  background-color: darkgrey;
+  color: black;
+  border: none;
+  width: 150px;
+  border-radius: 0;
+  margin: 10px;
+  height: 50px;
+}
+
+.custom-button:hover {
+  background-color: grey;
+}
+
+.actions {
+  text-align: right;
+}
+
+.custom-form {
+  margin: 2rem;
+  padding-top: 10px;
+}

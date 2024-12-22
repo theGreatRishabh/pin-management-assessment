@@ -1,44 +1,76 @@
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" required />
-    <mat-error *ngIf="customerForm.get('title')?.invalid"
-      >Title is required</mat-error
-    >
-  </mat-form-field>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="custom-form">
+  <div class="form-group row">
+    <label for="title" class="col-sm-3 col-form-label">Title</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+        required
+      />
+      <div *ngIf="customerForm.get('title')?.invalid" class="text-danger">
+        Title is required
+      </div>
+    </div>
+  </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" type="email" required />
-    <mat-error *ngIf="customerForm.get('email')?.invalid"
-      >Valid email is required</mat-error
-    >
-  </mat-form-field>
+  <div class="form-group row">
+    <label for="email" class="col-sm-3 col-form-label">Email</label>
+    <div class="col-sm-9">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        required
+      />
+      <div *ngIf="customerForm.get('email')?.invalid" class="text-danger">
+        Valid email is required
+      </div>
+    </div>
+  </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Region</mat-label>
-    <mat-select formControlName="region" (selectionChange)="onRegionChange()">
-      <mat-option *ngFor="let region of regions" [value]="region">{{
-        region
-      }}</mat-option>
-    </mat-select>
-    <mat-error *ngIf="customerForm.get('region')?.invalid"
-      >Region is required</mat-error
-    >
-  </mat-form-field>
+  <div class="form-group row">
+    <label for="region" class="col-sm-3 col-form-label">Region</label>
+    <div class="col-sm-9">
+      <select
+        class="form-control"
+        id="region"
+        formControlName="region"
+        (change)="onRegionChange()"
+        required
+      >
+        <option *ngFor="let region of regions" [value]="region">
+          {{ region }}
+        </option>
+      </select>
+      <div *ngIf="customerForm.get('region')?.invalid" class="text-danger">
+        Region is required
+      </div>
+    </div>
+  </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Country</mat-label>
-    <mat-select formControlName="country">
-      <mat-option *ngFor="let country of countries" [value]="country">{{
-        country
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="form-group row">
+    <label for="country" class="col-sm-3 col-form-label">Country</label>
+    <div class="col-sm-9">
+      <select class="form-control" id="country" formControlName="country">
+        <option *ngFor="let country of countries" [value]="country">
+          {{ country }}
+        </option>
+      </select>
+    </div>
+  </div>
 
-  <div class="actions">
-    <button mat-raised-button color="primary" [disabled]="customerForm.invalid">
-      Create Customer
-    </button>
+  <div class="form-group row justify-content-center">
+    <div class="col-sm-9 text-center">
+      <button
+        type="submit"
+        class="custom-button"
+        [disabled]="customerForm.invalid"
+      >
+        Create Customer
+      </button>
+    </div>
   </div>
 </form>

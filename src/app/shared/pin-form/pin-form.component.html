@@ -1,54 +1,74 @@
 <div>
-  <form [formGroup]="pinForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="pinTitle">Title*</label>
-      <input
-        type="text"
-        class="form-control"
-        id="pinTitle"
-        formControlName="title"
-        required
-      />
-      <div *ngIf="pinForm.get('title')?.invalid" class="text-danger">
-        Title is required
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="pinImage">Select Image*</label>
-      <input
-        type="file"
-        class="form-control-file"
-        id="pinImage"
-        (change)="onFileChange($event)"
-        accept="image/*"
-        required
-      />
-      <div *ngIf="!selectedFile && fileTouched" class="text-danger">
-        Image is required
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="pinCollaborators">Select Collaborators*</label>
-      <select
-        class="form-control"
-        id="pinCollaborators"
-        formControlName="collaborators"
-        required
+  <form [formGroup]="pinForm" (ngSubmit)="onSubmit()" class="custom-form">
+    <div class="form-group row">
+      <label for="pinTitle" class="col-sm-3 col-form-label text-right"
+        >Title*</label
       >
-        <option *ngFor="let customer of customers" [value]="customer">
-          {{ customer }}
-        </option>
-      </select>
-      <div *ngIf="pinForm.get('collaborators')?.invalid" class="text-danger">
-        At least one collaborator is required
+      <div class="col-sm-9">
+        <input
+          type="text"
+          class="form-control"
+          id="pinTitle"
+          formControlName="title"
+          required
+        />
+        <div *ngIf="pinForm.get('title')?.invalid" class="text-danger">
+          Title is required
+        </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label>Privacy*</label>
-      <div class="privacy-options">
+    <div class="form-group row">
+      <label for="pinImage" class="col-sm-3 col-form-label text-right"
+        >Select Image*</label
+      >
+      <div class="col-sm-9">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Upload</span>
+          </div>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="pinImage"
+              (change)="onFileChange($event)"
+              accept="image/*"
+              required
+            />
+            <label class="custom-file-label" for="pinImage">Choose file</label>
+          </div>
+        </div>
+        <div *ngIf="!selectedFile && fileTouched" class="text-danger">
+          Image is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="pinCollaborators" class="col-sm-3 col-form-label text-right"
+        >Select Collaborators*</label
+      >
+      <div class="col-sm-9">
+        <select
+          class="form-control"
+          id="pinCollaborators"
+          formControlName="collaborators"
+          required
+        >
+          <option *ngFor="let customer of customers" [value]="customer">
+            {{ customer }}
+          </option>
+        </select>
+        <div *ngIf="pinForm.get('collaborators')?.invalid" class="text-danger">
+          At least one collaborator is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label text-right">Privacy*</label>
+      <div class="col-sm-9">
         <div class="form-check form-check-inline">
           <input
             class="form-check-input"
@@ -73,20 +93,22 @@
           />
           <label class="form-check-label" for="privacyPrivate">Private</label>
         </div>
-      </div>
-      <div *ngIf="pinForm.get('privacy')?.invalid" class="text-danger">
-        Privacy selection is required
+        <div *ngIf="pinForm.get('privacy')?.invalid" class="text-danger">
+          Privacy selection is required
+        </div>
       </div>
     </div>
 
-    <div class="actions">
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="pinForm.invalid"
-      >
-        Add Pin
-      </button>
+    <div class="form-group row justify-content-center">
+      <div class="col-sm-9 text-center">
+        <button
+          type="submit"
+          class="custom-button"
+          [disabled]="pinForm.invalid"
+        >
+          Add Pin
+        </button>
+      </div>
     </div>
   </form>
 </div>
