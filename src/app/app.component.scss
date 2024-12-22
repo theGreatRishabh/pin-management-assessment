@@ -1,14 +1,35 @@
 * {
   padding: 10px;
 }
+
 .container {
   text-align: center;
   margin: 5rem;
 
+  h1 {
+    color: grey;
+  }
+
+  .custom-button {
+    background-color: grey;
+    color: black;
+    border: none;
+    width: 150px;
+    border-radius: 0;
+  }
+
+  .custom-button:hover {
+    background-color: darkgrey;
+  }
+
   .actions {
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 1rem;
     button {
-      margin: 0 1rem;
+      margin-bottom: 1rem;
+      width: 150px;
     }
   }
 }

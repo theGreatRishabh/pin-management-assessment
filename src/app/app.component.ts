@@ -16,6 +16,6 @@ export class AppComponent {
   }
 
   openPinDialog() {
-    this.dialog.open(PinFormComponent, { width: '500px' });
+    this.dialog.open(PinFormComponent, { width: '900px' });
   }
 }

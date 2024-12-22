@@ -1,8 +1,16 @@
 table {
   width: 100%;
-  margin-top: 1rem;
 
   img {
     border-radius: 4px;
   }
+}
+
+.custom-table {
+  border-color: #343a40; /* Darker border color */
+}
+
+.custom-table th,
+.custom-table td {
+  border-color: #343a40; /* Darker border color */
 }
