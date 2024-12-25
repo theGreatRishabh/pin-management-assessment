@@ -51,6 +51,7 @@
           id="pinCollaborators"
           formControlName="collaborators"
           required
+          multiple
         >
           <option *ngFor="let customer of customers" [value]="customer.title">
             {{ customer.title }}
