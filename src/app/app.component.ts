@@ -38,4 +38,9 @@ export class AppComponent implements OnInit {
   loadCustomers() {
     this.customers = this.customerService.getCustomers();
   }
+
+  clearDialog() {
+    localStorage.clear();
+    console.log('Local storage cleared');
+  }
 }
