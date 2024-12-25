@@ -51,9 +51,10 @@
           id="pinCollaborators"
           formControlName="collaborators"
           required
+          multiple
         >
-          <option *ngFor="let customer of customers" [value]="customer">
-            {{ customer }}
+          <option *ngFor="let customer of customers" [value]="customer.title">
+            {{ customer.title }}
           </option>
         </select>
         <div *ngIf="pinForm.get('collaborators')?.invalid" class="text-danger">
